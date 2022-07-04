@@ -22,6 +22,12 @@ export function write(b: number) {
     cur.x = 0;
   }
 
+  if (b === 0x08) {
+    cur.x -= 2;
+
+    disp.buff[disp.cursor.y][disp.cursor.x] = null;
+  }
+
   disp.cursor = cur;
 
   updateAll();

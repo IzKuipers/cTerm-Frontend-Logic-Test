@@ -1,31 +1,25 @@
 <script lang="ts">
   import { onMount } from "svelte";
+import { Login } from "./bin/login";
 
   import "./css/main.css";
   import Cursor from "./lib/Cursor.svelte";
   import Grid from "./lib/Grid.svelte";
   import TestChar from "./lib/TestChar.svelte";
   import { initDisplay } from "./ts/display/main";
-  import { scrollUp, writeStr } from "./ts/display/write";
+  import { processKey } from "./ts/io/keyboard";
 
-  onMount(() => {
+  onMount(async () => {
     initDisplay();
 
-    let max = 250;
-
-    (async() => {for (let i=0;i<280;i++){
-      setTimeout(() => {
-        writeStr(Math.floor(Math.random() * 10).toString());
-
-        //scrollUp(1);
-      }, max);
-
-      max += 50;
-    }})();
-    
+    Login();
   });
 </script>
 
-<TestChar />
-<Grid />
-<Cursor />
+<svelte:body on:keydown={processKey} />
+
+<div class="app">
+  <TestChar />
+  <Grid />
+  <Cursor />
+</div>

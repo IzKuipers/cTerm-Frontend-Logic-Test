@@ -12,7 +12,6 @@
     css = `top: ${$Display.charSize.height * y}px; left: ${
       $Display.charSize.width * x
     }px;`;
-    //console.log(x, y, c);
   }
 
   onMount(update);

@@ -68,6 +68,4 @@ export function initDisplay() {
   };
 
   Display.set(disp);
-
-  console.log(disp);
 }

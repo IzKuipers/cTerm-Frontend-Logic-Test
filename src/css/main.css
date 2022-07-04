@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 
-div#app {
+div.app {
     position:fixed;
     top:0px;
     left:0px;

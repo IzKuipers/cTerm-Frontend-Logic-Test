@@ -1,5 +1,5 @@
 <script lang="ts">
-import { globalUpdate } from "../ts/display/write";
+  import { globalUpdate } from "../ts/display/write";
 
   import { Display, DisplayData } from "../ts/display/main";
   import Char from "./Grid/Char.svelte";
@@ -13,8 +13,8 @@ import { globalUpdate } from "../ts/display/write";
   });
 
   globalUpdate.subscribe(() => {
-    disp = $Display
-  })
+    disp = $Display;
+  });
 </script>
 
 {#if disp}
