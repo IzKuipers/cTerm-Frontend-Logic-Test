@@ -1,5 +1,5 @@
 import { get, writable } from "svelte/store";
-import { Cursor, Display } from "../display";
+import { Cursor, Display } from "./main";
 
 export const globalUpdate = writable<number>(0);
 export function updateAll() {
@@ -21,7 +21,7 @@ export function write(b: number) {
 
     cur.x = 0;
   }
-  
+
   disp.cursor = cur;
 
   updateAll();
@@ -35,8 +35,6 @@ export function writeStr(str: string) {
 
 export function scrollUp(lines = 1) {
   const disp = get(Display);
-
-  console.warn("Scrolling UP!");
 
   for (let i = 0; i < lines; i++) {
     const cur: Cursor = { ...disp.cursor, y: disp.cursor.y };

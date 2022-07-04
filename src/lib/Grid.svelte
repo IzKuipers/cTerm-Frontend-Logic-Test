@@ -1,7 +1,7 @@
 <script lang="ts">
 import { globalUpdate } from "../ts/display/write";
 
-  import { Display, DisplayData } from "../ts/display";
+  import { Display, DisplayData } from "../ts/display/main";
   import Char from "./Grid/Char.svelte";
 
   let disp: DisplayData;

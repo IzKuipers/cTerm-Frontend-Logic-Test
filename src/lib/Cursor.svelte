@@ -2,7 +2,7 @@
 import { globalUpdate } from "../ts/display/write";
 
   import { onMount } from "svelte";
-  import { Display, DisplayData } from "../ts/display";
+  import { Display, DisplayData } from "../ts/display/main";
 
   let css = "";
 

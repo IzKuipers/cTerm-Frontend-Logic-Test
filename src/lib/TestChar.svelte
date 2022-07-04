@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TempCharSize } from "../ts/display";
+  import { TempCharSize } from "../ts/display/main";
   import { onMount } from "svelte";
 
   let tester: HTMLSpanElement;

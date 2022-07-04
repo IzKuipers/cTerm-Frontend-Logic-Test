@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Display } from "../../ts/display";
+  import { Display } from "../../ts/display/main";
 
   export let x: number;
   export let y: number;
