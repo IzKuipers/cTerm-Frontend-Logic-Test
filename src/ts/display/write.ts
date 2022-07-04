@@ -1,46 +1,25 @@
 import { get, writable } from "svelte/store";
-import { Display } from "../display";
-
-let maxTimeout = 1;
+import { Cursor, Display } from "../display";
 
 export const globalUpdate = writable<number>(0);
 
-function writeChar(char: string, x: number, y: number, delay = 0) {
+export function write(b: number) {
   const disp = get(Display);
+  const cur: Cursor = { ...disp.cursor, x: disp.cursor.x + 1 };
 
-  setTimeout(() => {
-    if (y >= disp.buffSize.height || x >= disp.buffSize.width) {
-      console.warn("Can't write character: out of bounds!");
-    }
+  if (b === 0x0a /* \n */ || cur.x >= disp.buffSize.width) {
+    cur.x = 0;
+    cur.y++;
+  }
 
-    disp.buff[y][x] = char;
+  disp.buff[disp.cursor.y][disp.cursor.x] = String.fromCharCode(b);
+  disp.cursor = cur;
 
-    const CursorPos = {
-      x: x + 1,
-      y,
-    };
-
-    get(Display).cursor = CursorPos;
-
-    globalUpdate.set(Math.floor(Math.random() * 1e6));
-  }, maxTimeout);
-
-  maxTimeout += delay;
+  globalUpdate.set(Math.floor(Math.random() * 1e6));
 }
 
-export function write(str: string, x: number, y: number, delay: number) {
-  const disp = get(Display);
-  let currentX = x - 1;
-
+export function writeStr(str: string) {
   for (let i = 0; i < str.length; i++) {
-    currentX++;
-
-    if (str[i] == "\n" || currentX >= disp.buffSize.width) {
-      currentX = 0;
-
-      y++;
-    }
-
-    writeChar(str[i], currentX, y, delay)
+    write(str.charCodeAt(i));
   }
 }
