@@ -6,6 +6,8 @@ export interface CharSize {
   initialized: boolean;
 }
 
+export type Cursor = { x: number; y: number };
+
 export interface DisplayData {
   buffSize: {
     width: number;
@@ -16,7 +18,7 @@ export interface DisplayData {
     height: number;
   };
 
-  cursor: { x: number; y: number };
+  cursor: Cursor;
 
   buff: string[][];
 }
