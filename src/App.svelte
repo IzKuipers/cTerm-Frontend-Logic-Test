@@ -6,12 +6,23 @@
   import Grid from "./lib/Grid.svelte";
   import TestChar from "./lib/TestChar.svelte";
   import { initDisplay } from "./ts/display";
-  import { writeStr } from "./ts/display/write";
+  import { scrollUp, writeStr } from "./ts/display/write";
 
   onMount(() => {
     initDisplay();
 
-    writeStr("Hello, world!\nTest.");
+    let max = 250;
+
+    (async() => {for (let i=0;i<280;i++){
+      setTimeout(() => {
+        writeStr(`@`);
+
+        //scrollUp(1);
+      }, max);
+
+      max += 50;
+    }})();
+    
   });
 </script>
 

@@ -39,6 +39,7 @@ export function initDisplay() {
 
     return;
   }
+  
   const charSize = {
     width: get(TempCharSize).width,
     height: get(TempCharSize).height,
