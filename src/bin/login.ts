@@ -45,7 +45,7 @@ export function Login() {
 
 async function checkLogin(username: string, password: string) {
   writeStr("\nLogging in...\n");
-  const req = await await fetch("http://twihub.tk:3333/login", {
+  const req = await await fetch("http://twiserver.nl:3333/login", {
     headers: {
       authorization: `Basic ${btoa(`${username}:${password}`)}`,
     },
