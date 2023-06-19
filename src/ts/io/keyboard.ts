@@ -1,6 +1,6 @@
-import { get, Writable, writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 import { Cursor } from "../display/cursor";
-import { write, writeStr } from "../display/write";
+import { writeStr } from "../display/write";
 
 export interface Input {
   masked: boolean;
@@ -19,7 +19,6 @@ export const InputData = writable<Input>(null);
 export const InputValue = writable<string>();
 export const InputCommit = writable<boolean>(false);
 
-// TODO: Find a better solution.
 let inputStr = "";
 
 export function processKey(e: KeyboardEvent) {
