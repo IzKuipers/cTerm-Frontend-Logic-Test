@@ -1,66 +1,15 @@
-import { input, Input } from "../ts/io/keyboard";
-import { write, writeStr } from "../ts/display/write";
+import { writeStr } from "../ts/display/write";
+import { input } from "../ts/io/stdin";
 
-const usernameInput: Input = {
-  masked: false,
-  running: true,
-  cosmetics: {
-    useMax: false,
-    maxLen: -1,
-  },
-};
-
-const passwordInput: Input = {
-  masked: true,
-  running: true,
-  cosmetics: {
-    useMax: false,
-    maxLen: -1,
-  },
-};
-
-export function Login() {
-  let username = "";
-  let password = "";
+export async function Login() {
   writeStr(
-    "cTerm v0.1-alpha **FLT**\n\nUsers can be managed in the admin panel.\n\nUsername: "
+    "cTerm v0.1-alpha **FLT**\n\nUsers can be managed in the admin panel.\n\n"
   );
 
-  const usernameCallback = (str) => {
-    username = str;
+  const username = await input("Username: ");
+  const password = await input("Password: ", -1, true, "*", "", "", false);
 
-    writeStr("Password: ");
+  console.log(username, password);
 
-    input(passwordInput, passwordCallback);
-  };
-
-  const passwordCallback = (str) => {
-    password = str;
-
-    checkLogin(username, password);
-  };
-
-  input(usernameInput, usernameCallback);
-}
-
-async function checkLogin(username: string, password: string) {
-  writeStr("\nLogging in...\n");
-  const req = await await fetch("http://twiserver.nl:3333/login", {
-    headers: {
-      authorization: `Basic ${btoa(`${username}:${password}`)}`,
-    },
-  });
-
-  if (req.status != 200) {
-    const json = await req.json();
-    writeStr(`\n${json.error.title}\n`);
-    writeStr(`${json.error.message}\n`);
-
-    writeStr("\n** HALT! **\n");
-    //Login();
-
-    return;
-  }
-
-  writeStr("Login successful!\n");
+  writeStr(`\n${username} ${password}`);
 }
