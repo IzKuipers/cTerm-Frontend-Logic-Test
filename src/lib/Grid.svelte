@@ -6,8 +6,6 @@
 
   let disp: DisplayData;
 
-  $: console.log($Display);
-
   Display.subscribe((v) => {
     disp = v;
   });

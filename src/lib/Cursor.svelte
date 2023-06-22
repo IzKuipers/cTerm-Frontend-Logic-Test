@@ -1,8 +1,9 @@
 <script lang="ts">
-import { globalUpdate } from "../ts/display/write";
+  import type { DisplayData } from "../ts/display/interface";
+  import { Display } from "../ts/display/store";
+  import { globalUpdate } from "../ts/display/write";
 
   import { onMount } from "svelte";
-  import { Display, DisplayData } from "../ts/display/main";
 
   let css = "";
 

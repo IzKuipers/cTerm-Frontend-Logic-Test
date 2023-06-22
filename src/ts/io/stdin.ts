@@ -48,14 +48,11 @@ export async function input(
 
   return new Promise<string>((resolve) => {
     InputCommit.subscribe((v) => {
-      console.log(`Resolving ${v}`);
       if (!v) return;
 
       const value = get(InputValue);
 
       if (!value) return;
-
-      console.log(value);
 
       resolve(value);
     });

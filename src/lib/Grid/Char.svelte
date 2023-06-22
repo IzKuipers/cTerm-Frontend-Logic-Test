@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Display } from "../../ts/display/main";
+  import { Display } from "../../ts/display/store";
 
   export let x: number;
   export let y: number;
@@ -21,6 +21,6 @@
 
 <style scoped>
   span {
-    position: fixed;
+    position: absolute;
   }
 </style>

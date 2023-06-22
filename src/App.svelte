@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from "svelte";
-import { Login } from "./bin/login";
 
   import "./css/main.css";
   import Cursor from "./lib/Cursor.svelte";
@@ -8,11 +7,12 @@ import { Login } from "./bin/login";
   import TestChar from "./lib/TestChar.svelte";
   import { initDisplay } from "./ts/display/main";
   import { processKey } from "./ts/io/keyboard";
+  import { runProg } from "./bin/main";
 
   onMount(async () => {
     initDisplay();
 
-    Login();
+    runProg("login", []);
   });
 </script>
 

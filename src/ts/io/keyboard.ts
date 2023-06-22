@@ -43,7 +43,6 @@ export function processKey(e: KeyboardEvent) {
     inputData.running = false;
 
     InputValue.set(inputStr);
-    console.log(inputStr);
 
     setTimeout(() => {
       inputStr = "";

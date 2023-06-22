@@ -43,14 +43,12 @@ export function scrollUp(lines = 1) {
   const disp = get(Display);
 
   for (let i = 0; i < lines; i++) {
-    const cur: Cursor = { ...disp.cursor, y: disp.cursor.y };
-
     disp.buff = [
       ...disp.buff.slice(1),
       new Array(disp.buffSize.width).fill(null),
     ];
 
-    disp.cursor = cur;
+    disp.cursor.y--;
   }
 
   updateAll();

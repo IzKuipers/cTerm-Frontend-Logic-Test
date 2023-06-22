@@ -1,6 +1,6 @@
 import { Authenticate } from "../api/auth/main";
 import { APICall } from "../api/main";
-import { writeStr } from "../ts/display/write";
+import { scrollUp, writeStr } from "../ts/display/write";
 import { input } from "../ts/io/stdin";
 
 export async function Login() {
@@ -16,4 +16,6 @@ export async function Login() {
   const valid = await Authenticate(username, password);
 
   writeStr(valid ? `VALID!` : "fuck you");
+
+  scrollUp();
 }

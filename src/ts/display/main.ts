@@ -1,45 +1,13 @@
-import { get, writable, Writable } from "svelte/store";
-
-export interface CharSize {
-  width: number;
-  height: number;
-  initialized: boolean;
-}
-
-export type Cursor = { x: number; y: number };
-
-export interface DisplayData {
-  buffSize: {
-    width: number;
-    height: number;
-  };
-  charSize: {
-    width: number;
-    height: number;
-  };
-
-  cursor: Cursor;
-
-  buff: string[][];
-}
-
-export const TempCharSize: Writable<CharSize> = writable<CharSize>({
-  width: 0,
-  height: 0,
-  initialized: false,
-});
-
-export const Display: Writable<DisplayData> = writable<DisplayData>(null);
+import { get } from "svelte/store";
+import { Display, TempCharSize } from "./store";
+import type { DisplayData } from "./interface";
 
 export function initDisplay() {
-  if (!get(TempCharSize).initialized) {
-    console.error(
+  if (!get(TempCharSize).initialized)
+    throw new Error(
       "Cannot initialize a display before the temp character size is set"
     );
 
-    return;
-  }
-  
   const charSize = {
     width: get(TempCharSize).width,
     height: get(TempCharSize).height,
@@ -69,3 +37,5 @@ export function initDisplay() {
 
   Display.set(disp);
 }
+
+export { Display, type DisplayData };
